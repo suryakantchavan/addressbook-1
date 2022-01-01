@@ -14,7 +14,7 @@ pipeline {
                 script{
                     echo "Compiling the code"
                     sshagent(['user-id-key']) {
-         sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.43.186 'mvn clean'"
+         sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.43.186 'mkdir Surya'"
         }        
                   }
             }
