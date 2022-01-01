@@ -19,12 +19,10 @@ pipeline {
         }
         stage('UnitTest') {
             when{
-                experssion
-                {
-                    params.exceuteTest==true
+                expression{
+                    params.exceuteTest == true
                 }
             }
-    
             steps {
                 script{
                     echo "Running the test cases"
