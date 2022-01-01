@@ -1,8 +1,11 @@
 pipeline {
-    agent none
-    tools{
-        jdk 'myJava'
-        maven 'myMaven'
+    agent any
+
+    parameters{
+
+        string(name: 'Version', defaultValue:'1.1',description:'this new config')
+        booleanParam(name: 'exceuteTest', defaultValue:true,description:'decide to run')
+        choice(name: 'Version', choices:['1.1','1.2','1.3'])
     }
     stages {
         stage('Compile') {
@@ -15,6 +18,12 @@ pipeline {
             }
         }
         stage('UnitTest') {
+            when{
+                experssion
+                {
+                    params.exceuteTest==true
+                }
+            }
     
             steps {
                 script{
@@ -38,6 +47,7 @@ pipeline {
            steps {
                 script{
                     echo "Deploying the app"
+                    echo "deploying version ${params..Version}"
                   }
             }
         }
