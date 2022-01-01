@@ -27,7 +27,7 @@ pipeline {
                 script{
                     echo "Running the test cases"
                 
-                }
+                } 
             }
             
         }
@@ -45,7 +45,7 @@ pipeline {
            steps {
                 script{
                     echo "Deploying the app"
-                    echo "deploying version ${params..Version}"
+                    echo "deploying version ${params.Version}"
                   }
             }
         }
