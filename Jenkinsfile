@@ -14,7 +14,7 @@ pipeline {
                 script{
                     echo "Compiling the code"
                     sshagent(['build-server-key']) {
-        sh "ssh -o StrictHostKeyChecking=no ec2-user@1172.31.36.105 'mvn package'
+        sh "ssh -o StrictHostKeyChecking=no ec2-user@1172.31.36.105 'mvn package'"
         }        
                   }
             }
