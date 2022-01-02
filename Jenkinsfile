@@ -13,13 +13,9 @@ pipeline {
             steps {
                 script{
                     echo "Compiling the code"
-                    sshagent(['user-id-key']) {
-        sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.43.186 'sudo yum install java-1.8.0-openjdk-devel -y'"
-        echo "java installation completed"
-        sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.43.186 'sudo yum install git -y'"
-        sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.43.186 'sudo yum install maven -y'"
-        sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.43.186 'git clone https://github.com/suryakantchavan/addressbook-1.git'"
-          sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.43.186 'mvn package'"
+                    sshagent(['user-id-key']) {            
+            sh "scp -o StrictHostKeyChecking=no server-script.sh ec2-user@172.31.43.186:/home/ec2-user"
+            sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.43.186 'bash ~/server-script.sh'"
         }        
                   }
             }
