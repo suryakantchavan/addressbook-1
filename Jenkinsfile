@@ -18,6 +18,8 @@ pipeline {
         echo "java installation completed"
         sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.43.186 'sudo yum install git -y'"
         sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.43.186 'sudo yum install maven -y'"
+        sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.43.186 'git clone https://github.com/suryakantchavan/addressbook-1.git'"
+          sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.43.186 'mvn package'"
         }        
                   }
             }
