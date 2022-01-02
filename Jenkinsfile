@@ -16,6 +16,8 @@ pipeline {
                     sshagent(['user-id-key']) {
         sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.43.186 'sudo yum install java-1.8.0-openjdk-devel -y'"
         echo "java installation completed"
+        sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.43.186 'sudo yum install git -y'"
+        sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.43.186 'sudo yum install maven -y'"
          sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.43.186 'rmdir Surya'"
         }        
                   }
