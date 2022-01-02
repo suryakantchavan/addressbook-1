@@ -5,6 +5,7 @@ sudo yum install maven -y
 if [ -d "addressbook-1" ]
 then
     echo "repo is already existing just cloning the new changes"
+    cd /home/ec2-user/addressbook-1
     git pull origin
 else
     git clone https://github.com/suryakantchavan/addressbook-1.git
