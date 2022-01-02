@@ -14,7 +14,9 @@ pipeline {
                 script{
                     echo "Compiling the code"
                     sshagent(['user-id-key']) {
-         sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.43.186 'mkdir Surya'"
+        sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.43.186 'sudo yum install java-1.8.0-openjdk-devel -y'"
+        echo "java installation completed"
+         sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.43.186 'rmdir Surya'"
         }        
                   }
             }
